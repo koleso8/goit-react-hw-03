@@ -1,8 +1,13 @@
 import React from 'react';
 import './App.css';
+import Practice from './components/Practice';
 
 const App = () => {
-  return <div>proj</div>;
+  return (
+    <div>
+      <Practice />
+    </div>
+  );
 };
 
 export default App;
