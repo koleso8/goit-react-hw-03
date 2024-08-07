@@ -1,19 +1,24 @@
 import clsx from 'clsx';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import * as Yup from 'yup';
 
 const ContactForm = addContact => {
+  const [count, setCount] = useState('0');
+
+  const counter = () => setCount(+1);
+
   const initialValues = {
-    username: '',
+    name: '',
     number: '',
+    id: count,
   };
 
   const nameFieldId = useId();
   const numberFieldId = useId();
 
   const contactSchema = Yup.object().shape({
-    username: Yup.string()
+    name: Yup.string()
       .trim()
       .min(3, 'Too Short!')
       .max(50, 'Too Long!')
@@ -26,6 +31,7 @@ const ContactForm = addContact => {
   });
 
   const handleSubmit = (values, actions) => {
+    counter();
     addContact.onAdd(values);
     actions.resetForm();
   };
@@ -38,15 +44,14 @@ const ContactForm = addContact => {
     >
       <Form>
         <label htmlFor={nameFieldId}>Username</label>
-        <Field type="text" name="username" id={nameFieldId} />
-        <ErrorMessage name="username" component="span" />
+        <Field type="text" name="name" id={nameFieldId} />
+        <ErrorMessage name="name" component="span" />
 
         <label htmlFor={numberFieldId}>Number</label>
         <Field type="tel" name="number" id={numberFieldId} />
         <ErrorMessage name="number" component="span" />
 
         <button type="submit">add contact</button>
-        <button type="button">reset</button>
       </Form>
     </Formik>
   );

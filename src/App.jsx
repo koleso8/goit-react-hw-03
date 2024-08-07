@@ -7,6 +7,7 @@ import contactsDate from './contacts.json';
 
 const App = () => {
   const [contacts, setContacts] = useState(contactsDate);
+  const [filter, setFilter] = useState('');
 
   const addContact = newContact => {
     console.log(newContact);
@@ -21,12 +22,16 @@ const App = () => {
     });
   };
 
+  const onFilterContact = contacts.filter(item =>
+    item.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <div>
       <h1>Phonebook</h1>
       <ContactForm onAdd={addContact} />
-      <SearchBox />
-      <ContactList contacts={contacts} onDelete={deleteContact} />
+      <SearchBox value={filter} onFilter={setFilter} />
+      <ContactList contacts={onFilterContact} onDelete={deleteContact} />
     </div>
   );
 };
