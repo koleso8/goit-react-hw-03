@@ -8,18 +8,20 @@ import contactsDate from './contacts.json';
 const App = () => {
   const [contacts, setContacts] = useState(contactsDate);
 
-  const handleDelete = contactId => {
+  const deleteContact = contactId => {
     setContacts(prev => {
       return prev.filter(item => item.id !== contactId);
     });
   };
 
+  const addContact = params => console.log(params);
+
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm />
+      <ContactForm onSubmit={addContact} />
       <SearchBox />
-      <ContactList contacts={contacts} onDelete={handleDelete} />
+      <ContactList contacts={contacts} onDelete={deleteContact} />
     </div>
   );
 };
