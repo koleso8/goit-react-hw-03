@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 const ContactForm = addContact => {
   const [count, setCount] = useState(0);
 
-  const counter = () => setCount(() => Date.now);
+  const counter = () => setCount(prev => Date.now());
 
   const initialValues = {
     name: '',
@@ -31,7 +31,8 @@ const ContactForm = addContact => {
   });
 
   const handleSubmit = (values, actions) => {
-    () => counter();
+    console.log(counter());
+
     addContact.onAdd(values);
     actions.resetForm();
   };
