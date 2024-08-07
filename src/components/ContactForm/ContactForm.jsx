@@ -4,9 +4,9 @@ import { useId, useState } from 'react';
 import * as Yup from 'yup';
 
 const ContactForm = addContact => {
-  const [count, setCount] = useState('0');
+  const [count, setCount] = useState(0);
 
-  const counter = () => setCount(+1);
+  const counter = () => setCount(() => Date.now);
 
   const initialValues = {
     name: '',
@@ -31,7 +31,7 @@ const ContactForm = addContact => {
   });
 
   const handleSubmit = (values, actions) => {
-    counter();
+    () => counter();
     addContact.onAdd(values);
     actions.resetForm();
   };
