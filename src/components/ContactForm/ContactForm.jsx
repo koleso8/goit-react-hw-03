@@ -1,12 +1,13 @@
 import clsx from 'clsx';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { nanoid } from 'nanoid';
 import { useId, useState } from 'react';
 import * as Yup from 'yup';
 
 const ContactForm = addContact => {
   const [count, setCount] = useState(0);
 
-  const counter = () => setCount(prev => Date.now());
+  const counter = () => setCount((prev = nanoid(5)));
 
   const initialValues = {
     name: '',
@@ -31,8 +32,8 @@ const ContactForm = addContact => {
   });
 
   const handleSubmit = (values, actions) => {
-    console.log(counter());
-
+    console.log(values);
+    counter();
     addContact.onAdd(values);
     actions.resetForm();
   };
