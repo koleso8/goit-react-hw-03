@@ -9,6 +9,7 @@ const SearchBox = ({ value, onFilter }) => {
     <div className={clsx(s.form)}>
       <label htmlFor={searchInputId}>Find contact by name</label>
       <input
+        placeholder="search by name"
         type="text"
         name="search"
         id={searchInputId}
