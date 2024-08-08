@@ -3,8 +3,6 @@ import { FaUser } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
 
 const Contact = ({ id, name, number, onDelete }) => {
-  console.log(id);
-
   return (
     <>
       <p>

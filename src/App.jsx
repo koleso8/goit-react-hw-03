@@ -4,13 +4,15 @@ import SearchBox from './components/SearchBox/SearchBox';
 import ContactForm from './components/ContactForm/ContactForm';
 import ContactList from './components/ContactList/ContactList';
 import contactsDate from './contacts.json';
+import { nanoid } from 'nanoid';
 
 const App = () => {
   const [contacts, setContacts] = useState(contactsDate);
   const [filter, setFilter] = useState('');
 
   const addContact = newContact => {
-    console.log(newContact);
+    newContact.id = nanoid(3);
+
     setContacts(prev => {
       return [...prev, newContact];
     });

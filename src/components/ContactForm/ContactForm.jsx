@@ -3,16 +3,12 @@ import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { nanoid } from 'nanoid';
 import { useId, useState } from 'react';
 import * as Yup from 'yup';
+import s from './ContactForm.module.css';
 
 const ContactForm = addContact => {
-  const [count, setCount] = useState(0);
-
-  const counter = () => setCount((prev = nanoid(5)));
-
   const initialValues = {
     name: '',
     number: '',
-    id: count,
   };
 
   const nameFieldId = useId();
@@ -21,19 +17,17 @@ const ContactForm = addContact => {
   const contactSchema = Yup.object().shape({
     name: Yup.string()
       .trim()
-      .min(3, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
+      .min(3, 'Must be at least 8 characters')
+      .max(50, 'Must be less  than 20 characters')
+      .required('Name is required'),
     number: Yup.string()
       .trim()
-      .min(3, 'Too Short!')
-      .max(50, 'Too Long!')
-      .required('Required'),
+      .min(3, 'Must be at least 8 characters')
+      .max(50, 'Must be less  than 20 characters')
+      .required('Number is required'),
   });
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
-    counter();
     addContact.onAdd(values);
     actions.resetForm();
   };
@@ -45,12 +39,22 @@ const ContactForm = addContact => {
       validationSchema={contactSchema}
     >
       <Form>
-        <label htmlFor={nameFieldId}>Username</label>
-        <Field type="text" name="name" id={nameFieldId} />
+        <label htmlFor={nameFieldId}>Name</label>
+        <Field
+          type="text"
+          name="name"
+          id={nameFieldId}
+          placeholder={'enter name'}
+        />
         <ErrorMessage name="name" component="span" />
 
         <label htmlFor={numberFieldId}>Number</label>
-        <Field type="tel" name="number" id={numberFieldId} />
+        <Field
+          type="tel"
+          name="number"
+          id={numberFieldId}
+          placeholder={'enter number'}
+        />
         <ErrorMessage name="number" component="span" />
 
         <button type="submit">add contact</button>
