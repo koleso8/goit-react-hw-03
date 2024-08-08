@@ -61,6 +61,7 @@ body {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  margin-bottom: 40px;
 }
 .title {
   padding-left: 65px;

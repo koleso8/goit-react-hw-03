@@ -42,7 +42,6 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
-  /* margin: 50px auto 0 auto; */
   padding: auto 15px 15px auto;
   width: 250px;
   height: 40px;
@@ -50,8 +49,8 @@
   border: 2px solid var(--main-color);
   background-color: var(--bg-color);
   box-shadow: 4px 4px var(--main-color);
-  font-size: 16px;
-  font-weight: 600;
+  font-size: large;
+  font-weight: bold;
   color: var(--font-color);
   cursor: pointer;
   transition: all 250ms;
@@ -100,7 +99,7 @@
   margin-bottom: 20px;
 }
 
-.labels {
+.form > label {
   font-weight: bold;
   font-size: large;
 }

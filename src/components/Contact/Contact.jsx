@@ -1,19 +1,24 @@
 import clsx from 'clsx';
 import { FaUser } from 'react-icons/fa';
 import { FaPhoneAlt } from 'react-icons/fa';
+import s from './Contact.module.css';
 
 const Contact = ({ id, name, number, onDelete }) => {
   return (
     <>
-      <p>
-        <FaUser color={'blue'} />
+      <p className={clsx(s.card__title)}>
+        <FaUser className={clsx(s.iconUser)} />
         {name}
       </p>
-      <p>
-        <FaPhoneAlt color={'blue'} />
+      <p className={clsx(s.card__subtitle)}>
+        <FaPhoneAlt className={clsx(s.iconNumber)} />
         {number}
       </p>
-      <button type="button" onClick={() => onDelete(id)}>
+      <button
+        className={clsx(s.signUp)}
+        type="button"
+        onClick={() => onDelete(id)}
+      >
         Delete
       </button>
     </>
