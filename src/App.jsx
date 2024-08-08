@@ -5,9 +5,10 @@ import ContactForm from './components/ContactForm/ContactForm';
 import ContactList from './components/ContactList/ContactList';
 import contactsDate from './contacts.json';
 import { nanoid } from 'nanoid';
+import { useLocalStorage } from './components/hooks/useLocalStorage';
 
 const App = () => {
-  const [contacts, setContacts] = useState(contactsDate);
+  const [contacts, setContacts] = useLocalStorage('contacts', contactsDate);
   const [filter, setFilter] = useState('');
 
   const addContact = newContact => {
