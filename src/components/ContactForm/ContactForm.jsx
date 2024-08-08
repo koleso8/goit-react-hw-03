@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
-import { nanoid } from 'nanoid';
-import { useId, useState } from 'react';
+import { useId } from 'react';
 import * as Yup from 'yup';
 import s from './ContactForm.module.css';
 

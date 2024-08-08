@@ -6,7 +6,6 @@ import ContactList from './components/ContactList/ContactList';
 import contactsDate from './contacts.json';
 import { nanoid } from 'nanoid';
 import { useLocalStorage } from './components/hooks/useLocalStorage';
-import clsx from 'clsx';
 
 const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', contactsDate);
