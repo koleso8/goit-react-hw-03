@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import { useId } from 'react';
+import s from '../ContactForm/ContactForm.module.css';
 
 const SearchBox = ({ value, onFilter }) => {
   const searchInputId = useId();
 
   return (
-    <div>
+    <div className={clsx(s.form)}>
       <label htmlFor={searchInputId}>Find contact by name</label>
       <input
         type="text"

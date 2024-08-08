@@ -47,3 +47,21 @@ img {
   width: 100%;
   height: auto;
 }
+
+body {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.tools {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.title {
+  padding-left: 65px;
+}

@@ -38,7 +38,7 @@ const ContactForm = addContact => {
       onSubmit={handleSubmit}
       validationSchema={contactSchema}
     >
-      <Form>
+      <Form className={clsx(s.form)}>
         <label htmlFor={nameFieldId}>Name</label>
         <Field
           type="text"
@@ -55,9 +55,11 @@ const ContactForm = addContact => {
           id={numberFieldId}
           placeholder={'enter number'}
         />
-        <ErrorMessage name="number" component="span" />
+        <ErrorMessage name="number" component="p" />
 
-        <button type="submit">add contact</button>
+        <button className={clsx(s.oauthButton)} type="submit">
+          add contact
+        </button>
       </Form>
     </Formik>
   );

@@ -6,6 +6,7 @@ import ContactList from './components/ContactList/ContactList';
 import contactsDate from './contacts.json';
 import { nanoid } from 'nanoid';
 import { useLocalStorage } from './components/hooks/useLocalStorage';
+import clsx from 'clsx';
 
 const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', contactsDate);
@@ -30,10 +31,12 @@ const App = () => {
   );
 
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact} />
-      <SearchBox value={filter} onFilter={setFilter} />
+    <div className="wrapper">
+      <h1 className="title">Phonebook</h1>
+      <section className="tools">
+        <ContactForm onAdd={addContact} />
+        <SearchBox value={filter} onFilter={setFilter} />
+      </section>
       <ContactList contacts={onFilterContact} onDelete={deleteContact} />
     </div>
   );
