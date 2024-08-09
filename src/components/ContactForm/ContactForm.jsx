@@ -59,6 +59,9 @@ const ContactForm = addContact => {
         <button className={clsx(s.oauthButton)} type="submit">
           add contact
         </button>
+        <button className={clsx(s.oauthButton)} type="reset">
+          reset
+        </button>
       </Form>
     </Formik>
   );
