@@ -3,6 +3,7 @@ import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { useId } from 'react';
 import * as Yup from 'yup';
 import s from './ContactForm.module.css';
+import { FaPhone, FaUser } from 'react-icons/fa';
 
 const ContactForm = addContact => {
   const initialValues = {
@@ -38,7 +39,9 @@ const ContactForm = addContact => {
       validationSchema={contactSchema}
     >
       <Form className={clsx(s.form)}>
-        <label htmlFor={nameFieldId}>Name</label>
+        <label htmlFor={nameFieldId}>
+          Name <FaUser className={clsx(s.icon)} />
+        </label>
         <Field
           type="text"
           name="name"
@@ -47,7 +50,10 @@ const ContactForm = addContact => {
         />
         <ErrorMessage name="name" component="span" />
 
-        <label htmlFor={numberFieldId}>Number</label>
+        <label htmlFor={numberFieldId}>
+          Number <FaPhone className={clsx(s.iconAlt)} />
+        </label>
+
         <Field
           type="tel"
           name="number"

@@ -103,3 +103,18 @@
   font-weight: bold;
   font-size: large;
 }
+
+.icon {
+  width: 15px;
+  color: #333;
+  position: absolute;
+  top: 72px;
+  right: 36px;
+}
+.iconAlt {
+  width: 15px;
+  color: #333;
+  position: absolute;
+  top: 192px;
+  right: 36px;
+}
