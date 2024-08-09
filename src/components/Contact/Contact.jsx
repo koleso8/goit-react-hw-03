@@ -7,7 +7,7 @@ import s from './Contact.module.css';
 const Contact = ({ id, name, number, onDelete, onEdit }) => {
   return (
     <>
-      <button className={clsx(s.edit)} onClick={() => onEdit(id)}>
+      <button className={clsx(s.edit)} onClick={() => onEdit(id, name, number)}>
         <FaPencilAlt />
       </button>
       <p className={clsx(s.card__title)}>

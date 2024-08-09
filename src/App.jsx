@@ -10,9 +10,13 @@ const App = () => {
   const [filter, setFilter] = useState('');
   const [isEdit, setIsEdit] = useState(false);
   const [changeContact, setChangeContact] = useState({});
+  const [initialValues, setInitialValues] = useState({});
 
-  const handleEdit = id => {
+  const handleEdit = (id, name, number) => {
+    setInitialValues({});
     setIsEdit(true);
+    setChangeContact({ id, name, number });
+    setInitialValues({ name, number });
   };
 
   const cancelEdit = () => setIsEdit(false);
@@ -35,12 +39,27 @@ const App = () => {
     item.name.toLowerCase().includes(filter.toLowerCase())
   );
 
+  const editing = contact => {
+    setContacts(prev =>
+      prev.map(item =>
+        item.id === changeContact.id ? { ...contact, id: item.id } : item
+      )
+    );
+
+    cancelEdit();
+  };
+
   return (
     <div className="wrapper">
       <h1 className="title">Phonebook</h1>
       <section className="tools">
         {isEdit ? (
-          <ChengeForm onCancel={cancelEdit} />
+          <ChengeForm
+            initialValues={initialValues}
+            onCancel={cancelEdit}
+            onEdit={handleEdit}
+            handleEdit={editing}
+          />
         ) : (
           <ContactForm onAdd={addContact} />
         )}

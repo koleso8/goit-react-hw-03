@@ -5,25 +5,19 @@ import s from '../ContactForm/ContactForm.module.css';
 import { FaPhone, FaUser } from 'react-icons/fa';
 import { contactSchema } from '../../helpers/contactSchema';
 
-export const ChengeForm = ({ addContact, onCancel }) => {
-  const initialValues = {
-    name: '',
-    number: '',
-  };
-
+export const ChengeForm = ({ onCancel, handleEdit, initialValues }) => {
   const nameFieldId = useId();
   const numberFieldId = useId();
 
-  const handleSubmit = (values, actions) => {
-    addContact.onAdd(values);
-    actions.resetForm();
+  const onSubmit = (value, action) => {
+    handleEdit(value);
+    action.resetForm();
   };
-
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={handleSubmit}
       validationSchema={contactSchema}
+      onSubmit={onSubmit}
     >
       <Form className={clsx(s.form, s.change)}>
         <label htmlFor={nameFieldId}>
