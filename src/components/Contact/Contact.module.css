@@ -53,3 +53,16 @@
   left: 5px;
   top: 40px;
 }
+
+.edit {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  background-color: rgba(250, 247, 247, 0.402);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: none;
+  padding: 10px;
+}

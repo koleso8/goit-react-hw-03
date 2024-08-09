@@ -3,7 +3,7 @@ import { FaSearch } from 'react-icons/fa';
 import { useId } from 'react';
 import s from '../ContactForm/ContactForm.module.css';
 
-const SearchBox = ({ value, onFilter }) => {
+export const SearchBox = ({ value, onFilter }) => {
   const searchInputId = useId();
 
   return (
@@ -23,5 +23,3 @@ const SearchBox = ({ value, onFilter }) => {
     </div>
   );
 };
-
-export default SearchBox;

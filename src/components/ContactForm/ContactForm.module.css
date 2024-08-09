@@ -19,6 +19,10 @@
   height: 100%;
   position: relative;
 }
+
+.change {
+  background: #f89b9b;
+}
 .form > span {
   font-family: var(--font-SpaceMono);
   color: rgb(244, 83, 83);

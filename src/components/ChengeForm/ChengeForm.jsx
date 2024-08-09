@@ -1,11 +1,11 @@
 import clsx from 'clsx';
-import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useId } from 'react';
-import { contactSchema } from '../../helpers/contactSchema';
-import s from './ContactForm.module.css';
+import s from '../ContactForm/ContactForm.module.css';
 import { FaPhone, FaUser } from 'react-icons/fa';
+import { contactSchema } from '../../helpers/contactSchema';
 
-export const ContactForm = addContact => {
+export const ChengeForm = ({ addContact, onCancel }) => {
   const initialValues = {
     name: '',
     number: '',
@@ -25,7 +25,7 @@ export const ContactForm = addContact => {
       onSubmit={handleSubmit}
       validationSchema={contactSchema}
     >
-      <Form className={clsx(s.form)}>
+      <Form className={clsx(s.form, s.change)}>
         <label htmlFor={nameFieldId}>
           Name <FaUser className={clsx(s.icon)} />
         </label>
@@ -50,10 +50,14 @@ export const ContactForm = addContact => {
         <ErrorMessage name="number" component="p" />
 
         <button className={clsx(s.oauthButton)} type="submit">
-          add contact
+          Edit
         </button>
-        <button className={clsx(s.oauthButton)} type="reset">
-          reset
+        <button
+          className={clsx(s.oauthButton)}
+          type="button"
+          onClick={onCancel}
+        >
+          Cancel
         </button>
       </Form>
     </Formik>

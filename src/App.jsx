@@ -1,15 +1,21 @@
 import { useState } from 'react';
 import './App.css';
-import SearchBox from './components/SearchBox/SearchBox';
-import ContactForm from './components/ContactForm/ContactForm';
-import ContactList from './components/ContactList/ContactList';
+import { ContactList, ChengeForm, SearchBox, ContactForm } from 'components';
 import contactsDate from './contacts.json';
 import { nanoid } from 'nanoid';
-import { useLocalStorage } from './components/hooks/useLocalStorage';
+import { useLocalStorage } from 'components/hooks/useLocalStorage';
 
 const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', contactsDate);
   const [filter, setFilter] = useState('');
+  const [isEdit, setIsEdit] = useState(false);
+  const [changeContact, setChangeContact] = useState({});
+
+  const handleEdit = id => {
+    setIsEdit(true);
+  };
+
+  const cancelEdit = () => setIsEdit(false);
 
   const addContact = newContact => {
     newContact.id = nanoid(3);
@@ -33,10 +39,18 @@ const App = () => {
     <div className="wrapper">
       <h1 className="title">Phonebook</h1>
       <section className="tools">
-        <ContactForm onAdd={addContact} />
+        {isEdit ? (
+          <ChengeForm onCancel={cancelEdit} />
+        ) : (
+          <ContactForm onAdd={addContact} />
+        )}
         <SearchBox value={filter} onFilter={setFilter} />
       </section>
-      <ContactList contacts={onFilterContact} onDelete={deleteContact} />
+      <ContactList
+        contacts={onFilterContact}
+        onDelete={deleteContact}
+        onEdit={handleEdit}
+      />
     </div>
   );
 };
