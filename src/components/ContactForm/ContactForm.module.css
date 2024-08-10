@@ -115,10 +115,18 @@
   top: 72px;
   right: 36px;
 }
+.iconSearch {
+}
 .iconAlt {
   width: 15px;
   color: #333;
   position: absolute;
   top: 192px;
   right: 36px;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
