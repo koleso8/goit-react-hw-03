@@ -3,7 +3,12 @@ import { FaSearch } from 'react-icons/fa';
 import { useId } from 'react';
 import s from '../ContactForm/ContactForm.module.css';
 
-export const SearchBox = ({ value, onFilter }) => {
+export const SearchBox = ({
+  value,
+  valueOfNumber,
+  onFilter,
+  onFilterByNumber,
+}) => {
   const searchInputId = useId();
   const searchNumberId = useId();
 
@@ -33,8 +38,8 @@ export const SearchBox = ({ value, onFilter }) => {
           type="text"
           name="search"
           id={searchNumberId}
-          value={value}
-          onChange={e => onFilter(e.target.value)}
+          value={valueOfNumber}
+          onChange={e => onFilterByNumber(e.target.value)}
         />
       </div>
     </div>

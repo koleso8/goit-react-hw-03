@@ -116,6 +116,9 @@
   right: 36px;
 }
 .iconSearch {
+  position: absolute;
+  right: 36px;
+  top: 90px;
 }
 .iconAlt {
   width: 15px;

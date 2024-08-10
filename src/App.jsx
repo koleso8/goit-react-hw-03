@@ -8,6 +8,7 @@ import { useLocalStorage } from 'components/hooks/useLocalStorage';
 const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', contactsDate);
   const [filter, setFilter] = useState('');
+  const [filterByNumber, setFilterByNumber] = useState('');
   const [isEdit, setIsEdit] = useState(false);
   const [changeContact, setChangeContact] = useState({});
   const [initialValues, setInitialValues] = useState({});
@@ -39,6 +40,23 @@ const App = () => {
     item.name.toLowerCase().includes(filter.toLowerCase())
   );
 
+  const onFilterContactByNumber = contacts.filter(item =>
+    item.number
+      .replace('+', '')
+      .replace('(', '')
+      .replace(')', '')
+      .replace('-', '')
+      .replace(' ', '')
+      .includes(
+        filterByNumber
+          .replace('+', '')
+          .replace('(', '')
+          .replace(')', '')
+          .replace('-', '')
+          .replace(' ', '')
+      )
+  );
+
   const editing = contact => {
     setContacts(prev =>
       prev.map(item =>
@@ -63,10 +81,15 @@ const App = () => {
         ) : (
           <ContactForm onAdd={addContact} />
         )}
-        <SearchBox value={filter} onFilter={setFilter} />
+        <SearchBox
+          valueOfNumber={filterByNumber}
+          value={filter}
+          onFilter={setFilter}
+          onFilterByNumber={setFilterByNumber}
+        />
       </section>
       <ContactList
-        contacts={onFilterContact}
+        contacts={(onFilterContact, onFilterContactByNumber)}
         onDelete={deleteContact}
         onEdit={handleEdit}
       />
