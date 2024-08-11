@@ -1,9 +1,9 @@
-import { useState } from 'react';
 import './App.css';
+import { useState } from 'react';
 import { ContactList, ChengeForm, SearchBox, ContactForm } from 'components';
-import contactsDate from './contacts.json';
 import { nanoid } from 'nanoid';
 import { useLocalStorage } from 'components/hooks/useLocalStorage';
+import contactsDate from './contacts.json';
 
 const App = () => {
   const [contacts, setContacts] = useLocalStorage('contacts', contactsDate);
